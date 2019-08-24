@@ -1,8 +1,45 @@
-<div>
-    <p *ngIf="pageWidth > 768">
-        home Desktop!
-      </p>
-    <p *ngIf="pageWidth < 768">
-        home Mobile!
-      </p>
+<div class="graybg">
+  <mat-table [dataSource]="dataSource" class="mat-elevation-z8 table-row" *ngIf="pageWidth > 768" >
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>>
+      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="age">
+      <mat-header-cell *matHeaderCellDef> Age </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.age}} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="city">
+      <mat-header-cell *matHeaderCellDef> City </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.city}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onClick(row)"></mat-row>
+  </mat-table>
+</div>
+  
+<div *ngIf="pageWidth <= 768" class="graybg">
+  <mat-card *ngFor="let customer of dataSource" class="card" (click)="onClick(customer)">
+    <mat-card-title>{{customer.name}}, {{customer.city}}</mat-card-title>
+    <mat-card-content>
+      <div>
+        <p>Idade: {{customer.age}}</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
 </div>
