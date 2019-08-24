@@ -1,4 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
+import {CustomersList} from '../app.models';
+import { HomeService } from './home.service';
 
 @Component({
   selector: 'app-home',
@@ -7,8 +9,14 @@ import { Component, OnInit, HostListener } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   pageWidth = NaN;
+  displayedColumns: string[] = ['id', 'name', 'age', 'city'];
+  dataSource: CustomersList[];
 
-  constructor() { }
+  onClick(element) {
+    console.log(element)
+  }
+
+  constructor( private homeService: HomeService) { }
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
@@ -16,6 +24,9 @@ export class HomeComponent implements OnInit {
   }
   ngOnInit() {
     this.pageWidth = window.innerWidth;
+    return this.homeService.getCustomers()
+    .subscribe( customers => this.dataSource = customers);
   }
 
 }
+
