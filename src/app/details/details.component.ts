@@ -21,6 +21,9 @@ export class DetailsComponent implements OnInit {
   onClick() {
     this.detailsService.editCustomers(this.customerData);
   }
+  onCancel() {
+    this.router.navigate(['/']);
+  }
 
   onChange(event, key) {
     this.customerData[key] = event.target.value;
