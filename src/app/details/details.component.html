@@ -1,0 +1,19 @@
+<div class="details-wrapper">
+  <mat-card class="card">
+    <mat-card-title>Editar informações</mat-card-title>
+    <mat-card-content class="details">
+      <mat-form-field>
+          <input matInput value="{{customerData.name}}" (keyup)="onChange($event, 'name')">
+      </mat-form-field>
+      <mat-form-field>
+          <input matInput value="{{customerData.city}}" (keyup)="onChange($event, 'city')">
+      </mat-form-field>
+      <mat-form-field>
+          <input matInput value="{{customerData.age}}" (keyup)="onChange($event, 'age')">
+      </mat-form-field> 
+    </mat-card-content>
+    <mat-card-actions class="flex-actions">
+      <button mat-raised-button color="primary" (click)="onClick()">Salvar</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
