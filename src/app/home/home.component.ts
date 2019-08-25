@@ -13,10 +13,9 @@ export class HomeComponent implements OnInit {
   dataSource: CustomersList[];
 
   onClick(element) {
-    console.log(element)
+    this.appService.retrieveCustomer(element);
+    this.router.navigate(['/edit', element.id]);
   }
-
-  constructor( private homeService: HomeService) { }
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
