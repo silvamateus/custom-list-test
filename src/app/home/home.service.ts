@@ -9,7 +9,7 @@ import {CustomersList} from '../app.models';
 })
 
 export class HomeService {
-  apiUrl = 'http://private-92a969-processoseletivo1.apiary-mock.com/customers';
+  apiUrl = 'https://private-92a969-processoseletivo1.apiary-mock.com/customers';
 
   constructor(private http: HttpClient) {}
     getCustomers() {
